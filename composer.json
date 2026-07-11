@@ -1,0 +1,36 @@
+{
+  "name": "wpruby/delivery-promise-for-woocommerce",
+  "description": "Automated test tooling for Delivery Promise for WooCommerce.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "doctrine/instantiator": "^1.5",
+    "phpunit/phpunit": "^9.6",
+    "yoast/phpunit-polyfills": "^2.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WPRuby\\DeliveryPromise\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "test:unit": "phpunit --testsuite Unit",
+    "test:integration": "phpunit --testsuite Integration",
+    "lint": "php -r '$it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(getcwd())); foreach ($it as $file) { $path = $file->getPathname(); if ($file->isFile() && substr($path, -4) === \".php\" && strpos($path, DIRECTORY_SEPARATOR . \"vendor\" . DIRECTORY_SEPARATOR) === false && strpos($path, DIRECTORY_SEPARATOR . \"node_modules\" . DIRECTORY_SEPARATOR) === false) { passthru(\"php -l \" . escapeshellarg($path), $code); if ($code) exit($code); } }'",
+    "ci": [
+      "@lint",
+      "@test"
+    ]
+  },
+  "config": {
+    "allow-plugins": false,
+    "platform": {
+      "php": "7.4.33"
+    },
+    "sort-packages": true
+  }
+}

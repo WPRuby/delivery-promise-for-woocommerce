@@ -1,0 +1,188 @@
+<?php
+/**
+ * Main plugin container and bootstrapper.
+ *
+ * @package WPRuby\DeliveryPromise
+ */
+
+namespace WPRuby\DeliveryPromise;
+
+use WPRuby\DeliveryPromise\Admin\AdminApp;
+use WPRuby\DeliveryPromise\Domain\Calendar;
+use WPRuby\DeliveryPromise\Domain\LiteDeliveryCalculator;
+use WPRuby\DeliveryPromise\Domain\MessageFormatter;
+use WPRuby\DeliveryPromise\Infrastructure\Assets;
+use WPRuby\DeliveryPromise\Infrastructure\ProConflict;
+use WPRuby\DeliveryPromise\Infrastructure\Settings;
+use WPRuby\DeliveryPromise\Rest\RestController;
+use WPRuby\DeliveryPromise\WooCommerce\ProductPage;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Class Plugin
+ *
+ * Acts as a lightweight service container and wires the Lite modules together.
+ */
+final class Plugin {
+
+	/**
+	 * Singleton instance.
+	 *
+	 * @var Plugin|null
+	 */
+	private static $instance = null;
+
+	/**
+	 * Settings accessor.
+	 *
+	 * @var Settings
+	 */
+	private $settings;
+
+	/**
+	 * Calendar service.
+	 *
+	 * @var Calendar
+	 */
+	private $calendar;
+
+	/**
+	 * Delivery calculator service.
+	 *
+	 * @var LiteDeliveryCalculator
+	 */
+	private $calculator;
+
+	/**
+	 * Message formatter service.
+	 *
+	 * @var MessageFormatter
+	 */
+	private $message_formatter;
+
+	/**
+	 * Get the singleton instance.
+	 *
+	 * @return Plugin
+	 */
+	public static function get_instance(): Plugin {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * Constructor: wire everything up.
+	 */
+	private function __construct() {
+		add_action( 'init', array( $this, 'load_textdomain' ) );
+
+		if ( ! $this->is_woocommerce_active() ) {
+			add_action( 'admin_notices', array( $this, 'render_missing_woocommerce_notice' ) );
+
+			return;
+		}
+
+		$this->boot();
+	}
+
+	/**
+	 * Instantiate services and hook integrations.
+	 *
+	 * @return void
+	 */
+	private function boot(): void {
+		$this->settings          = new Settings();
+		$this->calendar          = new Calendar( $this->settings );
+		$this->message_formatter = new MessageFormatter( $this->settings );
+		$this->calculator        = new LiteDeliveryCalculator( $this->settings, $this->calendar );
+
+		( new Assets( $this->settings ) )->register();
+
+		( new RestController(
+			$this->settings,
+			$this->calculator,
+			$this->message_formatter
+		) )->register();
+
+		if ( is_admin() ) {
+			( new AdminApp() )->register();
+		}
+
+		if ( ! ProConflict::is_pro_active() ) {
+			( new ProductPage( $this->settings, $this->calculator, $this->message_formatter ) )->register();
+		}
+	}
+
+	/**
+	 * Load translations.
+	 *
+	 * @return void
+	 */
+	public function load_textdomain(): void {
+		load_plugin_textdomain(
+			DELIVERY_PROMISE_TEXT_DOMAIN,
+			false,
+			dirname( DELIVERY_PROMISE_BASENAME ) . '/languages'
+		);
+	}
+
+	/**
+	 * Whether WooCommerce is active.
+	 *
+	 * @return bool
+	 */
+	public function is_woocommerce_active(): bool {
+		return class_exists( 'WooCommerce' );
+	}
+
+	/**
+	 * Render an admin notice when WooCommerce is not active.
+	 *
+	 * @return void
+	 */
+	public function render_missing_woocommerce_notice(): void {
+		if ( ! current_user_can( 'activate_plugins' ) ) {
+			return;
+		}
+
+		echo '<div class="notice notice-error"><p>';
+		echo esc_html__(
+			'Delivery Promise for WooCommerce requires WooCommerce to be installed and active.',
+			'delivery-promise-for-woocommerce'
+		);
+		echo '</p></div>';
+	}
+
+	/**
+	 * Settings accessor.
+	 *
+	 * @return Settings
+	 */
+	public function settings(): Settings {
+		return $this->settings;
+	}
+
+	/**
+	 * Calculator accessor.
+	 *
+	 * @return LiteDeliveryCalculator
+	 */
+	public function calculator(): LiteDeliveryCalculator {
+		return $this->calculator;
+	}
+
+	/**
+	 * Message formatter accessor.
+	 *
+	 * @return MessageFormatter
+	 */
+	public function message_formatter(): MessageFormatter {
+		return $this->message_formatter;
+	}
+}

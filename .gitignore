@@ -1,0 +1,9 @@
+node_modules/
+vendor/
+build/
+dist/
+coverage/
+npm-debug.log*
+.DS_Store
+.idea
+.phpunit.result.cache
