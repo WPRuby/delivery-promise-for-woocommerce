@@ -1,12 +1,12 @@
 <template>
   <div class="wpruby-dp-view">
-    <SettingsSection :title="sections.message" :description="sections.messageDesc">
+    <SettingsSection :title="sections.title" :description="sections.desc">
       <SettingsCard :title="cards.template" icon="message">
         <div class="wpruby-dp-field">
           <label class="wpruby-dp-field__label" for="dp-lite-message-template">{{ labels.template }}</label>
           <textarea
             id="dp-lite-message-template"
-            class="wpruby-dp-input"
+            class="dpl-input wpruby-dp-input"
             rows="3"
             v-model="settings.message_product"
             @blur="refreshPreview"
@@ -27,36 +27,26 @@
         </div>
       </SettingsCard>
 
-      <SettingsCard :title="cards.preview" icon="eye">
+      <SettingsCard :title="cards.placement" icon="pin">
+        <RadioCards
+          v-model="settings.product_placement"
+          :options="placements"
+          :label="labels.placement"
+        />
+      </SettingsCard>
+
+      <SettingsCard :title="cards.style" icon="eye">
+        <RadioCards
+          v-model="settings.display_style"
+          :options="styleOptions"
+          :label="labels.style"
+        />
+      </SettingsCard>
+
+      <SettingsCard :title="cards.preview" icon="truck">
         <DisplayPreview :message="previewMessage" :style="settings.display_style" :show-icon="settings.show_icon" />
         <p v-if="previewError" class="wpruby-dp-field__error">{{ previewError }}</p>
         <p v-if="previewLoading" class="wpruby-dp-field__help">{{ labels.previewLoading }}</p>
-      </SettingsCard>
-    </SettingsSection>
-
-    <SettingsSection :title="sections.appearance" :description="sections.appearanceDesc">
-      <SettingsCard>
-        <SelectField
-          v-model="settings.product_placement"
-          :label="labels.placement"
-          :options="placements"
-        />
-      </SettingsCard>
-
-      <SettingsCard>
-        <SelectField
-          v-model="settings.display_style"
-          :label="labels.style"
-          :options="styles"
-        />
-      </SettingsCard>
-
-      <SettingsCard>
-        <ToggleField
-          v-model="settings.show_icon"
-          :label="labels.showIcon"
-          :help="labels.showIconHelp"
-        />
       </SettingsCard>
     </SettingsSection>
   </div>
@@ -66,8 +56,7 @@
 import { computed, ref, watch, onMounted } from 'vue';
 import SettingsSection from '../components/SettingsSection.vue';
 import SettingsCard from '../components/SettingsCard.vue';
-import SelectField from '../components/SelectField.vue';
-import ToggleField from '../components/ToggleField.vue';
+import RadioCards from '../components/RadioCards.vue';
 import DisplayPreview from '../components/DisplayPreview.vue';
 import { state, previewMessage as fetchPreview } from '../store.js';
 import { __ } from '../api/client.js';
@@ -76,22 +65,30 @@ const settings = computed(() => state.settings || {});
 const data = computed(() => state.data || {});
 const placeholders = computed(() => data.value.placeholders || []);
 const placements = computed(() => data.value.placements || []);
-const styles = computed(() => data.value.styles || []);
+
+const styleOptions = computed(() =>
+  (data.value.styles || []).map((opt) => ({
+    ...opt,
+    desc: opt.value === 'highlighted'
+      ? __('Soft highlighted box on the product page.')
+      : __('Simple text without extra styling.'),
+  }))
+);
 
 const previewMessage = ref('');
 const previewError = ref('');
 const previewLoading = ref(false);
 
 const sections = {
-  message: __('Message template'),
-  messageDesc: __('Customize the delivery estimate shown on product pages.'),
-  appearance: __('Appearance'),
-  appearanceDesc: __('Choose where and how the estimate appears on product pages.'),
+  title: __('Display'),
+  desc: __('Customize how the estimate appears on product pages.'),
 };
 
 const cards = {
   template: __('Message template'),
-  preview: __('Preview'),
+  placement: __('Placement'),
+  style: __('Style'),
+  preview: __('Live preview'),
 };
 
 const labels = {
@@ -99,8 +96,6 @@ const labels = {
   placeholders: __('Insert placeholder'),
   placement: __('Placement on product page'),
   style: __('Display style'),
-  showIcon: __('Show delivery icon'),
-  showIconHelp: __('Display a small truck icon before the message.'),
   previewLoading: __('Updating preview…'),
 };
 
@@ -138,6 +133,7 @@ watch(
     settings.value.holidays,
     settings.value.display_style,
     settings.value.show_icon,
+    settings.value.product_placement,
   ],
   () => refreshPreview(),
   { deep: true }

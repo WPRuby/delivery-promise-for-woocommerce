@@ -1,37 +1,33 @@
 <template>
   <div class="wpruby-dp-view">
     <SettingsSection :title="sections.main" :description="sections.mainDesc">
-      <SettingsCard>
-        <div class="wpruby-dp-togglebox">
-          <label class="wpruby-dp-toggle">
-            <input
-              type="checkbox"
-              :checked="settings.enabled"
-              @change="settings.enabled = $event.target.checked"
-            />
-            <span class="wpruby-dp-toggle__track" aria-hidden="true"></span>
-          </label>
-          <div class="wpruby-dp-togglebox__main">
-            <div class="wpruby-dp-togglebox__title">{{ labels.enable }}</div>
-            <div class="wpruby-dp-togglebox__desc">{{ labels.enableHelp }}</div>
-          </div>
+      <SettingsCard :title="cards.status" icon="settings">
+        <ToggleField
+          v-model="settings.enabled"
+          row
+          :label="labels.enable"
+          :help="labels.enableHelp"
+        />
+        <div style="margin-top: 14px;">
           <StatusBadge :variant="settings.enabled ? 'on' : 'off'" dot>
             {{ settings.enabled ? labels.on : labels.off }}
           </StatusBadge>
         </div>
       </SettingsCard>
 
-      <SettingsCard>
+      <SettingsCard :title="cards.productPage" icon="eye">
         <ToggleField
           v-model="settings.display_product"
+          row
           :label="labels.productPage"
           :help="labels.productPageHelp"
         />
       </SettingsCard>
 
-      <SettingsCard>
+      <SettingsCard :title="cards.availability" icon="check">
         <ToggleField
           v-model="settings.in_stock_only"
+          row
           :label="labels.inStockOnly"
           :help="labels.inStockOnlyHelp"
         />
@@ -54,6 +50,12 @@ const settings = computed(() => state.settings || {});
 const sections = {
   main: __('General'),
   mainDesc: __('Enable delivery estimates and choose where they appear on product pages.'),
+};
+
+const cards = {
+  status: __('Plugin status'),
+  productPage: __('Product page display'),
+  availability: __('Product availability'),
 };
 
 const labels = {

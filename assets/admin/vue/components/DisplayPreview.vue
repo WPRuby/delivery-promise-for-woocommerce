@@ -33,10 +33,10 @@ const safeMessage = computed(() => {
   border: 0;
 }
 .delivery-promise-lite--highlighted {
-  padding: 0.65em 0.85em;
-  border-radius: 4px;
-  background: #f0f6fc;
-  border: 1px solid #c3d9ef;
+  padding: 0.75em 1em;
+  border-radius: 10px;
+  background: #fce7f3;
+  border: 1px solid #f9a8d4;
 }
 .delivery-promise-lite {
   display: flex;

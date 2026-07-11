@@ -1,27 +1,27 @@
 <template>
-  <div class="wpruby-dp-shell">
+  <div class="dpl-shell">
     <AppHeader
       :dirty="isDirty"
       :saving="state.savingSettings"
       @save="saveSettings"
     />
 
-    <nav class="wpruby-dp-tabs" :aria-label="tabsLabel">
+    <nav class="dpl-tabs" :aria-label="tabsLabel">
       <button
         v-for="tab in tabs"
         :key="tab.id"
         type="button"
-        class="wpruby-dp-tab"
-        :class="{ 'wpruby-dp-tab--active': activeTab === tab.id }"
+        class="dpl-tab"
+        :class="{ 'dpl-tab--active': activeTab === tab.id }"
         :aria-current="activeTab === tab.id ? 'page' : undefined"
         @click="setActiveTab(tab.id)"
       >
         <Icon :name="tab.icon" />
-        <span class="wpruby-dp-tab__label">{{ tab.label }}</span>
+        <span class="dpl-tab__label">{{ tab.label }}</span>
       </button>
     </nav>
 
-    <div class="wpruby-dp-shell__body">
+    <div class="dpl-shell__body">
       <div v-if="state.notice" style="margin-bottom: 18px;">
         <Notice :notice="state.notice" @close="clearNotice" />
       </div>

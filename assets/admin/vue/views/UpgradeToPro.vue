@@ -15,7 +15,7 @@
           <div style="margin-top: 18px;">
             <a
               :href="proUrl"
-              class="wpruby-dp-btn wpruby-dp-btn--primary"
+              class="dpl-button dpl-button--primary wpruby-dp-btn wpruby-dp-btn--primary"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -43,7 +43,7 @@ const proActive = !!bootData.proActive;
 
 const sections = {
   title: __('Upgrade to Pro'),
-  desc: __('Delivery Promise Pro adds advanced rules, countdown timers, and storewide delivery promises.'),
+  desc: __('Compare Lite with Delivery Promise Pro and unlock advanced delivery rules and storewide display.'),
 };
 
 const cards = {
@@ -52,7 +52,7 @@ const cards = {
 };
 
 const labels = {
-  upgrade: __('Learn about Delivery Promise Pro'),
+  upgrade: __('Upgrade to Pro'),
   proActiveNotice: __(
     'Delivery Promise Pro is active. Please deactivate this Lite plugin to avoid duplicate delivery estimates.'
   ),
@@ -60,21 +60,21 @@ const labels = {
 
 const liteFeatures = [
   __('Product page estimate'),
-  __('Simple processing and transit days'),
-  __('Basic working days'),
-  __('Simple message template'),
+  __('Processing and transit days'),
+  __('Business days'),
+  __('Message template'),
   __('Up to 5 excluded dates'),
 ];
 
 const proFeatures = [
   __('Advanced delivery rules'),
-  __('Cutoff countdown timers'),
+  __('Cutoff countdown'),
   __('Product and category lead times'),
   __('Shipping method estimates'),
   __('Cart, checkout, order, and email display'),
-  __('Order promise snapshot'),
-  __('Delivery promise tester'),
-  __('Unlimited holidays and rule presets'),
+  __('Delivery Promise Tester'),
+  __('Rule presets'),
+  __('Saved promise on order'),
 ];
 </script>
 
@@ -85,6 +85,6 @@ const proFeatures = [
   line-height: 1.7;
 }
 .wpruby-dp-feature-list--pro {
-  color: #1d2327;
+  color: #0f172a;
 }
 </style>

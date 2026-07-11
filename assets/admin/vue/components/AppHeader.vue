@@ -1,8 +1,8 @@
 <template>
-  <header class="wpruby-dp-header">
-    <div class="wpruby-dp-header__brand">
-      <div class="wpruby-dp-header__titlebar">
-        <span class="wpruby-dp-header__logo" aria-hidden="true">
+  <header class="dpl-header wpruby-dp-header">
+    <div class="dpl-header__brand wpruby-dp-header__brand">
+      <div class="dpl-header__titlebar wpruby-dp-header__titlebar">
+        <span class="dpl-icon-tile wpruby-dp-header__logo" aria-hidden="true">
           <Icon name="truck" />
         </span>
         <h1 class="wpruby-dp-header__title">{{ title }}</h1>
@@ -11,15 +11,15 @@
       <p class="wpruby-dp-header__desc">{{ description }}</p>
 
       <div v-if="ready" class="wpruby-dp-header__chips">
-        <span class="wpruby-dp-chip" :class="enabled ? 'wpruby-dp-chip--on' : 'wpruby-dp-chip--off'">
+        <span class="wpruby-dp-chip dpl-chip" :class="enabled ? 'wpruby-dp-chip--on' : 'wpruby-dp-chip--off'">
           <span class="wpruby-dp-chip__dot" aria-hidden="true"></span>
           {{ enabled ? enabledLabel : disabledLabel }}
         </span>
-        <span class="wpruby-dp-chip" :class="productPage ? 'wpruby-dp-chip--on' : 'wpruby-dp-chip--off'">
+        <span class="wpruby-dp-chip dpl-chip" :class="productPage ? 'wpruby-dp-chip--on' : 'wpruby-dp-chip--off'">
           <Icon name="eye" />
           {{ productPageLabel }}
         </span>
-        <span class="wpruby-dp-chip">
+        <span class="wpruby-dp-chip dpl-chip">
           <Icon name="calendar" />
           {{ workingDaysLabel }}
         </span>
@@ -29,17 +29,19 @@
     <div class="wpruby-dp-header__actions">
       <span
         class="wpruby-dp-status"
-        :class="dirty ? 'wpruby-dp-status--dirty' : 'wpruby-dp-status--saved'"
+        :class="saving ? 'wpruby-dp-status--dirty' : dirty ? 'wpruby-dp-status--dirty' : 'wpruby-dp-status--saved'"
       >
         <span class="wpruby-dp-status__dot" aria-hidden="true"></span>
-        {{ dirty ? unsavedLabel : savedLabel }}
+        {{ saving ? savingLabel : dirty ? unsavedLabel : savedLabel }}
       </span>
       <button
         type="button"
-        class="wpruby-dp-btn wpruby-dp-btn--primary wpruby-dp-header__save"
+        class="dpl-button wpruby-dp-btn wpruby-dp-header__save"
+        :class="dirty && !saving ? 'dpl-button--primary wpruby-dp-btn--primary' : 'dpl-button--disabled'"
         :disabled="saving || !dirty"
         @click="$emit('save')"
       >
+        <span v-if="saving" class="dpl-button__spinner" aria-hidden="true"></span>
         {{ saving ? savingLabel : saveLabel }}
       </button>
     </div>

@@ -8,23 +8,26 @@
     </div>
 
     <SettingsSection :title="sections.timing" :description="sections.timingDesc">
-      <div class="wpruby-dp-grid-2">
-        <SettingsCard :title="cards.processing" icon="clock">
-          <div class="wpruby-dp-range">
-            <NumberField v-model="settings.processing_min" :label="labels.min" :min="0" />
-            <span class="wpruby-dp-range__sep" aria-hidden="true">–</span>
-            <NumberField v-model="settings.processing_max" :label="labels.max" :min="0" />
+      <SettingsCard :title="cards.deliveryTiming" icon="clock">
+        <div class="wpruby-dp-grid-2">
+          <div>
+            <p class="wpruby-dp-field__label">{{ cards.processing }}</p>
+            <div class="wpruby-dp-range">
+              <NumberField v-model="settings.processing_min" :label="labels.min" :min="0" />
+              <span class="wpruby-dp-range__sep" aria-hidden="true">–</span>
+              <NumberField v-model="settings.processing_max" :label="labels.max" :min="0" />
+            </div>
           </div>
-        </SettingsCard>
-
-        <SettingsCard :title="cards.transit" icon="truck">
-          <div class="wpruby-dp-range">
-            <NumberField v-model="settings.transit_min" :label="labels.min" :min="0" />
-            <span class="wpruby-dp-range__sep" aria-hidden="true">–</span>
-            <NumberField v-model="settings.transit_max" :label="labels.max" :min="0" />
+          <div>
+            <p class="wpruby-dp-field__label">{{ cards.transit }}</p>
+            <div class="wpruby-dp-range">
+              <NumberField v-model="settings.transit_min" :label="labels.min" :min="0" />
+              <span class="wpruby-dp-range__sep" aria-hidden="true">–</span>
+              <NumberField v-model="settings.transit_max" :label="labels.max" :min="0" />
+            </div>
           </div>
-        </SettingsCard>
-      </div>
+        </div>
+      </SettingsCard>
     </SettingsSection>
 
     <SettingsSection :title="sections.schedule" :description="sections.scheduleDesc">
@@ -37,6 +40,13 @@
           <TimeField v-model="settings.cutoff_time" :label="labels.cutoff" :help="labels.cutoffHelp" />
         </SettingsCard>
       </div>
+    </SettingsSection>
+
+    <SettingsSection :title="sections.preview" :description="sections.previewDesc">
+      <SettingsCard :title="cards.preview" icon="truck">
+        <DisplayPreview :message="previewMessage" :style="settings.display_style" :show-icon="true" />
+        <p v-if="previewLoading" class="wpruby-dp-field__help">{{ labels.previewLoading }}</p>
+      </SettingsCard>
     </SettingsSection>
 
     <SettingsSection :title="sections.excluded" :description="sections.excludedDesc">
@@ -104,7 +114,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, watch, onMounted } from 'vue';
 import SettingsSection from '../components/SettingsSection.vue';
 import SettingsCard from '../components/SettingsCard.vue';
 import MetricCard from '../components/MetricCard.vue';
@@ -112,8 +122,9 @@ import NumberField from '../components/NumberField.vue';
 import TimeField from '../components/TimeField.vue';
 import DayPills from '../components/DayPills.vue';
 import EmptyState from '../components/EmptyState.vue';
+import DisplayPreview from '../components/DisplayPreview.vue';
 import Icon from '../components/Icon.vue';
-import { state } from '../store.js';
+import { state, previewMessage as fetchPreview } from '../store.js';
 import { __ } from '../api/client.js';
 
 const settings = computed(() => state.settings || {});
@@ -124,6 +135,8 @@ const holidays = computed(() => settings.value.holidays || []);
 const newDate = ref('');
 const newLabel = ref('');
 const error = ref('');
+const previewMessage = ref('');
+const previewLoading = ref(false);
 
 const dateId = 'dp-lite-excluded-date';
 const labelId = 'dp-lite-excluded-label';
@@ -141,19 +154,23 @@ const transitSummary = computed(() => {
 });
 
 const sections = {
-  timing: __('Processing & transit'),
-  timingDesc: __('Set how many working days you need to process orders and ship them.'),
-  schedule: __('Working days & cutoff'),
+  timing: __('Estimate'),
+  timingDesc: __('Configure the basic delivery estimate calculation.'),
+  schedule: __('Business days'),
   scheduleDesc: __('Choose which days count as working days and when same-day processing ends.'),
+  preview: __('Preview'),
+  previewDesc: __('See how your current estimate settings affect the delivery message.'),
   excluded: __('Excluded dates'),
   excludedDesc: __('Optional dates when you do not dispatch or deliver (up to 5).'),
 };
 
 const cards = {
+  deliveryTiming: __('Delivery timing'),
   processing: __('Processing days'),
   transit: __('Transit days'),
   working: __('Working days'),
   cutoff: __('Cutoff time'),
+  preview: __('Preview'),
   addExcluded: __('Add excluded date'),
   excludedList: __('Excluded dates'),
 };
@@ -177,6 +194,7 @@ const labels = {
   remove: __('Remove'),
   actions: __('Actions'),
   limitReached: __('Lite supports up to 5 excluded dates.'),
+  previewLoading: __('Updating preview…'),
 };
 
 const emptyTitle = __('No excluded dates');
@@ -208,4 +226,36 @@ function addHoliday() {
 function removeHoliday(index) {
   settings.value.holidays.splice(index, 1);
 }
+
+async function refreshPreview() {
+  if (!state.settings) {
+    return;
+  }
+  previewLoading.value = true;
+  try {
+    const result = await fetchPreview();
+    previewMessage.value = result.message || '';
+  } catch (e) {
+    previewMessage.value = '';
+  } finally {
+    previewLoading.value = false;
+  }
+}
+
+watch(
+  () => [
+    settings.value.processing_min,
+    settings.value.processing_max,
+    settings.value.transit_min,
+    settings.value.transit_max,
+    settings.value.working_days,
+    settings.value.cutoff_time,
+    settings.value.holidays,
+    settings.value.message_product,
+  ],
+  () => refreshPreview(),
+  { deep: true }
+);
+
+onMounted(() => refreshPreview());
 </script>
