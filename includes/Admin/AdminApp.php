@@ -103,10 +103,8 @@ class AdminApp {
 			return;
 		}
 
-		echo '<div class="wrap delivery-promise-lite-wrap">';
-		echo '<div id="delivery-promise-lite-admin" class="delivery-promise-lite-app">';
-		echo '<p class="delivery-promise-lite-app__loading">' . esc_html__( 'Loading Delivery Promise…', 'delivery-promise-for-woocommerce' ) . '</p>';
-		echo '</div>';
+		echo '<div id="delivery-promise-lite-admin" class="delivery-promise-lite-admin">';
+		echo '<p class="delivery-promise-lite-admin__loading">' . esc_html__( 'Loading Delivery Promise…', 'delivery-promise-for-woocommerce' ) . '</p>';
 		echo '</div>';
 	}
 }
