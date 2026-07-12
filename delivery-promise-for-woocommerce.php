@@ -9,9 +9,9 @@
  * Version:           1.0.0
  * Requires PHP:      7.4
  * Requires at least: 5.6
- * Tested up to:      6.8
+ * Tested up to:      7.0
  * WC requires at least: 6.0
- * WC tested up to:   9.9
+ * WC tested up to:   10.9
  * Author:            WPRuby
  * Author URI:        https://wpruby.com
  * License:           GPL-2.0+
