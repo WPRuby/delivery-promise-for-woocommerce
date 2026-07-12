@@ -81,11 +81,7 @@ class ProductPage {
 	 * @return void
 	 */
 	public function render(): void {
-		global $product;
-
-		if ( ! $product instanceof WC_Product ) {
-			$product = wc_get_product( get_the_ID() );
-		}
+		$product = wc_get_product( get_the_ID() );
 
 		if ( ! $this->should_show_for_product( $product ) ) {
 			return;

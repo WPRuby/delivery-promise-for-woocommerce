@@ -80,8 +80,6 @@ final class Plugin {
 	 * Constructor: wire everything up.
 	 */
 	private function __construct() {
-		add_action( 'init', array( $this, 'load_textdomain' ) );
-
 		if ( ! $this->is_woocommerce_active() ) {
 			add_action( 'admin_notices', array( $this, 'render_missing_woocommerce_notice' ) );
 
@@ -117,19 +115,6 @@ final class Plugin {
 		if ( ! ProConflict::is_pro_active() ) {
 			( new ProductPage( $this->settings, $this->calculator, $this->message_formatter ) )->register();
 		}
-	}
-
-	/**
-	 * Load translations.
-	 *
-	 * @return void
-	 */
-	public function load_textdomain(): void {
-		load_plugin_textdomain(
-			DELIVERY_PROMISE_TEXT_DOMAIN,
-			false,
-			dirname( DELIVERY_PROMISE_BASENAME ) . '/languages'
-		);
 	}
 
 	/**

@@ -1,8 +1,8 @@
-=== Delivery Promise for WooCommerce – Product Page Delivery Estimates ===
+=== Delivery Promise for WooCommerce ===
 Contributors: wpruby
 Tags: woocommerce delivery date, woocommerce delivery estimate, estimated delivery, shipping estimate, delivery promise
 Requires at least: 5.6
-Tested up to: 6.8
+Tested up to: 7.0
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
