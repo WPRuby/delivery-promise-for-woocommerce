@@ -7,8 +7,6 @@
 
 namespace WPRuby\DeliveryPromise\Admin;
 
-use WPRuby\DeliveryPromise\Infrastructure\ProConflict;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -31,7 +29,6 @@ class AdminApp {
 	public function register(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 		add_filter( 'plugin_action_links_' . DELIVERY_PROMISE_BASENAME, array( $this, 'action_links' ) );
-		add_action( 'admin_notices', array( $this, 'maybe_render_pro_conflict_notice' ) );
 	}
 
 	/**
@@ -63,34 +60,6 @@ class AdminApp {
 		array_unshift( $links, $link );
 
 		return $links;
-	}
-
-	/**
-	 * Show a contextual notice when Pro is active.
-	 *
-	 * @return void
-	 */
-	public function maybe_render_pro_conflict_notice(): void {
-		if ( ! ProConflict::is_pro_active() ) {
-			return;
-		}
-
-		$page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only page check.
-
-		if ( self::PAGE_SLUG !== $page ) {
-			return;
-		}
-
-		if ( ! current_user_can( self::CAPABILITY ) ) {
-			return;
-		}
-
-		echo '<div class="notice notice-warning"><p>';
-		echo esc_html__(
-			'Delivery Promise Pro is active. Please deactivate Delivery Promise for WooCommerce Lite to avoid duplicate delivery estimates.',
-			'delivery-promise-for-woocommerce'
-		);
-		echo '</p></div>';
 	}
 
 	/**

@@ -9,7 +9,6 @@ namespace WPRuby\DeliveryPromise\Tests\Integration;
 
 use WPRuby\DeliveryPromise\Domain\LiteDeliveryCalculator;
 use WPRuby\DeliveryPromise\Domain\MessageFormatter;
-use WPRuby\DeliveryPromise\Infrastructure\ProConflict;
 use WPRuby\DeliveryPromise\Infrastructure\Settings;
 use WPRuby\DeliveryPromise\Rest\RestController;
 use WPRuby\DeliveryPromise\Tests\TestCase;
@@ -48,9 +47,5 @@ class IntegrationSmokeTest extends TestCase {
 		$controller = new RestController( $settings, $calculator, $formatter );
 
 		$this->assertInstanceOf( '\WP_Error', $controller->check_permission() );
-	}
-
-	public function test_pro_conflict_is_available(): void {
-		$this->assertFalse( ProConflict::is_pro_active() );
 	}
 }

@@ -12,16 +12,16 @@ Show simple WooCommerce delivery and dispatch estimates on product pages using p
 
 == Description ==
 
-Delivery Promise for WooCommerce (Lite) helps stores display simple delivery or dispatch estimates on WooCommerce product pages.
+Delivery Promise for WooCommerce helps stores display simple delivery or dispatch estimates on WooCommerce product pages.
 
 Example messages:
 
 * Order today and get it between July 15 – July 18.
 * Usually ships in 2–4 business days.
 
-Lite calculates estimates locally from your store settings — no external APIs, no license key, and no advanced rule engine.
+Estimates are calculated locally from your store settings — no external APIs and no license key.
 
-**Lite includes:**
+**Features:**
 
 * Product page delivery estimate
 * Processing and transit day settings
@@ -31,8 +31,6 @@ Lite calculates estimates locally from your store settings — no external APIs,
 * Customizable message template with placeholders
 * Plain or highlighted display style
 * Placement options on the product page
-
-**Pro adds:** advanced delivery rules, cutoff countdown timers, product/category lead times, shipping-method estimates, cart/checkout/order/email display, order promise snapshots, delivery promise tester, and unlimited holidays.
 
 == Installation ==
 
@@ -47,27 +45,23 @@ Lite calculates estimates locally from your store settings — no external APIs,
 
 = Does this show estimates on product pages? =
 
-Yes. Lite displays simple delivery or dispatch estimates on WooCommerce product pages.
+Yes. The plugin displays simple delivery or dispatch estimates on WooCommerce product pages.
 
-= Does Lite support cart and checkout estimates? =
+= Does it support cart and checkout estimates? =
 
-No. Cart, checkout, order, and email delivery promises are available in Pro.
+No. Estimates are shown on product pages only.
 
-= Does Lite support product-specific lead times? =
+= Does it support product-specific lead times? =
 
-No. Product, category, and variation lead times are available in Pro.
+No. Processing and transit days are configured once for the whole store.
 
-= Does Lite include countdown timers? =
+= Does it include countdown timers? =
 
-No. Cutoff countdowns and "Order within" timers are available in Pro.
+No. You can set an optional cutoff time that affects same-day dispatch calculations, but there is no countdown timer UI.
 
-= Does Lite use external APIs? =
+= Does it use external APIs? =
 
-No. Lite calculates estimates locally from your settings.
-
-= Can Lite and Pro run together? =
-
-No. If Delivery Promise Pro is active, Lite will not output storefront estimates. Deactivate Lite when using Pro to avoid duplicate messages.
+No. Estimates are calculated locally from your settings.
 
 == Screenshots ==
 
@@ -79,12 +73,11 @@ No. If Delivery Promise Pro is active, Lite will not output storefront estimates
 == Changelog ==
 
 = 1.0.0 =
-* Initial Lite release for WordPress.org
+* Initial release for WordPress.org
 * Product page delivery estimates with processing days, transit days, and working days
-* Simple admin UI with General, Estimate, Display, and Upgrade to Pro tabs
-* Pro conflict detection when Delivery Promise Pro is active
+* Simple admin UI with General, Estimate, and Display tabs
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-Initial Lite release for WordPress.org.
+Initial release for WordPress.org.

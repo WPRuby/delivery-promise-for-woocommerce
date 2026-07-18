@@ -52,7 +52,6 @@ import Icon from './components/Icon.vue';
 import GeneralSettings from './views/GeneralSettings.vue';
 import EstimateSettings from './views/EstimateSettings.vue';
 import DisplaySettings from './views/DisplaySettings.vue';
-import UpgradeToPro from './views/UpgradeToPro.vue';
 import { state, isDirty, loadAll, saveSettings, clearNotice } from './store.js';
 import { __ } from './api/client.js';
 
@@ -60,7 +59,6 @@ const tabs = [
   { id: 'general', label: __('General'), icon: 'settings', view: GeneralSettings },
   { id: 'estimate', label: __('Estimate'), icon: 'clock', view: EstimateSettings },
   { id: 'display', label: __('Display'), icon: 'eye', view: DisplaySettings },
-  { id: 'upgrade', label: __('Upgrade to Pro'), icon: 'sparkles', view: UpgradeToPro },
 ];
 const tabIds = tabs.map((tab) => tab.id);
 const activeTab = ref(tabFromHash());

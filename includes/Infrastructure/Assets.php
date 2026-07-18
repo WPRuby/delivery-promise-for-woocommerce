@@ -110,8 +110,6 @@ class Assets {
 				'restUrl'   => esc_url_raw( rest_url( 'delivery-promise-for-woocommerce/v1/' ) ),
 				'restNonce' => wp_create_nonce( 'wp_rest' ),
 				'version'   => (string) DELIVERY_PROMISE_VERSION,
-				'proActive' => ProConflict::is_pro_active(),
-				'proUrl'    => esc_url_raw( 'https://wpruby.com/plugin/delivery-promise-for-woocommerce/' ),
 				'data'      => AdminData::all(),
 			)
 		);
