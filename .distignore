@@ -4,6 +4,8 @@
 /.distignore
 /.env
 /.env.*
+/.idea
+/.vscode
 .DS_Store
 /Makefile
 /bin
@@ -13,13 +15,12 @@
 /docs
 /node_modules
 /tests
-/assets/admin/vue
+/vendor
 /composer.json
 /composer.lock
-/package.json
 /package-lock.json
 /phpunit.xml
 /phpunit.xml.dist
-/vite.config.*
 *.map
 npm-debug.log*
+.phpunit.result.cache

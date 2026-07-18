@@ -1,0 +1,165 @@
+# Copyright (C) 2026 WPRuby
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Delivery Promise for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/delivery-promise-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-18T15:13:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: delivery-promise-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: delivery-promise-for-woocommerce.php
+#: includes/Admin/AdminApp.php:45
+msgid "Delivery Promise for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: delivery-promise-for-woocommerce.php
+msgid "https://wpruby.com/plugin/delivery-promise-for-woocommerce/"
+msgstr ""
+
+#. Description of the plugin
+#: delivery-promise-for-woocommerce.php
+msgid "Show simple WooCommerce delivery and dispatch estimates on product pages using processing days, transit days, and working days."
+msgstr ""
+
+#. Author of the plugin
+#: delivery-promise-for-woocommerce.php
+msgid "WPRuby"
+msgstr ""
+
+#. Author URI of the plugin
+#: delivery-promise-for-woocommerce.php
+msgid "https://wpruby.com"
+msgstr ""
+
+#: includes/Admin/AdminApp.php:46
+msgid "Delivery Promise"
+msgstr ""
+
+#: includes/Admin/AdminApp.php:62
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/AdminApp.php:89
+msgid "WooCommerce Delivery Dates Pro is active. Please deactivate Delivery Promise for WooCommerce to avoid duplicate delivery estimates."
+msgstr ""
+
+#: includes/Admin/AdminApp.php:107
+msgid "Loading Delivery Promise…"
+msgstr ""
+
+#: includes/Admin/AdminData.php:46
+msgid "Monday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:47
+msgid "Tuesday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:48
+msgid "Wednesday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:49
+msgid "Thursday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:50
+msgid "Friday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:51
+msgid "Saturday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:52
+msgid "Sunday"
+msgstr ""
+
+#: includes/Admin/AdminData.php:75
+msgid "Earliest delivery date."
+msgstr ""
+
+#: includes/Admin/AdminData.php:79
+msgid "Latest delivery date."
+msgstr ""
+
+#: includes/Admin/AdminData.php:83
+msgid "Processing days (e.g. 1 or 1–2)."
+msgstr ""
+
+#: includes/Admin/AdminData.php:87
+msgid "Minimum transit days."
+msgstr ""
+
+#: includes/Admin/AdminData.php:91
+msgid "Maximum transit days."
+msgstr ""
+
+#: includes/Admin/AdminData.php:95
+msgid "Delivery date range."
+msgstr ""
+
+#: includes/Admin/AdminData.php:99
+msgid "Same-day dispatch cutoff time."
+msgstr ""
+
+#: includes/Admin/AdminData.php:113
+msgid "After price"
+msgstr ""
+
+#: includes/Admin/AdminData.php:117
+msgid "Before add to cart"
+msgstr ""
+
+#: includes/Admin/AdminData.php:121
+msgid "After add to cart"
+msgstr ""
+
+#: includes/Admin/AdminData.php:135
+msgid "Plain"
+msgstr ""
+
+#: includes/Admin/AdminData.php:139
+msgid "Highlighted"
+msgstr ""
+
+#: includes/Domain/MessageFormatter.php:160
+msgid "today"
+msgstr ""
+
+#: includes/Domain/MessageFormatter.php:164
+msgid "tomorrow"
+msgstr ""
+
+#: includes/Infrastructure/Assets.php:75
+msgid "Delivery Promise: the admin app bundle is missing. Run \"npm install && npm run build\" inside the plugin folder."
+msgstr ""
+
+#: includes/Infrastructure/Settings.php:55
+msgid "Order today and get it between {earliest_date} – {latest_date}."
+msgstr ""
+
+#: includes/Plugin.php:141
+msgid "Delivery Promise for WooCommerce requires WooCommerce to be installed and active."
+msgstr ""
+
+#: includes/Rest/RestController.php:137
+msgid "You do not have permission to manage Delivery Promise settings."
+msgstr ""
+
+#: includes/Rest/RestController.php:320
+msgid "Preview datetime cannot be empty."
+msgstr ""
+
+#: includes/Rest/RestController.php:335
+msgid "Preview datetime must be a valid date/time."
+msgstr ""
