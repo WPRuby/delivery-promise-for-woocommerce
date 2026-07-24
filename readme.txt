@@ -1,6 +1,7 @@
 === Delivery Promise for WooCommerce ===
-Contributors: wpruby
-Tags: woocommerce, delivery estimate, shipping estimate, estimated delivery, product page
+Contributors: wprubyplugins
+Donate link: https://wpruby.com/
+Tags: woocommerce, delivery date, estimated delivery date, shipping date, delivery time
 Requires at least: 6.5
 Tested up to: 7.0
 Requires PHP: 7.4
@@ -41,15 +42,6 @@ Example messages:
 * `{processing_days}` — configured processing days
 * `{min_transit_days}` / `{max_transit_days}` — transit day range
 
-**Limitations of this free version:**
-
-* Estimates are shown on product pages only (not cart, checkout, orders, or emails)
-* Store-wide processing and transit settings only (no per-product lead times)
-* No cutoff countdown timers
-* Up to 5 excluded dates
-
-Advanced rules, cart/checkout/order/email display, product lead times, and countdown timers are available in WooCommerce Delivery Dates Pro (a separate commercial plugin by WPRuby).
-
 **Source code:** The Vue admin UI source is included under `assets/admin/vue/`. The public repository is https://github.com/WPRuby/delivery-promise-for-woocommerce
 
 == Installation ==
@@ -69,23 +61,19 @@ Yes. The plugin displays a simple delivery or dispatch estimate on WooCommerce p
 
 = Does this plugin support cart and checkout estimates? =
 
-The free version focuses on product page estimates. Cart, checkout, order, and email delivery dates are available in WooCommerce Delivery Dates Pro.
+No. This version focuses on product page estimates only.
 
 = Does this plugin include countdown timers? =
 
-No. Cutoff countdowns and “order within” timers are available in WooCommerce Delivery Dates Pro.
+No. You can set an optional cutoff time that affects same-day dispatch calculations, but there is no countdown timer UI.
 
 = Does this plugin use external APIs? =
 
-No. The free plugin calculates delivery estimates locally using your configured processing days, transit days, and working days.
+No. The plugin calculates delivery estimates locally using your configured processing days, transit days, and working days.
 
 = Does it work without WooCommerce? =
 
 No. WooCommerce must be installed and active.
-
-= Can this plugin run together with WooCommerce Delivery Dates Pro? =
-
-No. If WooCommerce Delivery Dates Pro is active, this plugin will not output storefront estimates. Deactivate Delivery Promise for WooCommerce when using Pro to avoid duplicate messages.
 
 == Screenshots ==
 
@@ -100,7 +88,6 @@ No. If WooCommerce Delivery Dates Pro is active, this plugin will not output sto
 * Initial release for WordPress.org
 * Product page delivery estimates with processing days, transit days, and working days
 * Simple admin UI with General, Estimate, and Display tabs
-* Conflict handling when WooCommerce Delivery Dates Pro is active
 
 == Upgrade Notice ==
 

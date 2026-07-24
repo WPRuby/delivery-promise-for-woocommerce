@@ -12,7 +12,6 @@ use WPRuby\DeliveryPromise\Domain\Calendar;
 use WPRuby\DeliveryPromise\Domain\LiteDeliveryCalculator;
 use WPRuby\DeliveryPromise\Domain\MessageFormatter;
 use WPRuby\DeliveryPromise\Infrastructure\Assets;
-use WPRuby\DeliveryPromise\Infrastructure\ProConflict;
 use WPRuby\DeliveryPromise\Infrastructure\Settings;
 use WPRuby\DeliveryPromise\Rest\RestController;
 use WPRuby\DeliveryPromise\WooCommerce\ProductPage;
@@ -112,10 +111,7 @@ final class Plugin {
 			( new AdminApp() )->register();
 		}
 
-		// Avoid duplicate storefront estimates when WooCommerce Delivery Dates Pro is active.
-		if ( ! ProConflict::is_pro_active() ) {
-			( new ProductPage( $this->settings, $this->calculator, $this->message_formatter ) )->register();
-		}
+		( new ProductPage( $this->settings, $this->calculator, $this->message_formatter ) )->register();
 	}
 
 	/**

@@ -125,10 +125,6 @@ class Assets {
 	 * @return void
 	 */
 	public function enqueue_frontend(): void {
-		if ( ProConflict::is_pro_active() ) {
-			return;
-		}
-
 		if ( ! $this->settings->is_enabled() || ! $this->settings->is_display_enabled( 'product' ) ) {
 			return;
 		}

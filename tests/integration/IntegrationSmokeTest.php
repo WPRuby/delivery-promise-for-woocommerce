@@ -27,7 +27,6 @@ class IntegrationSmokeTest extends TestCase {
 		$this->assertTrue( class_exists( '\WPRuby\DeliveryPromise\Plugin' ) );
 		$this->assertTrue( class_exists( Settings::class ) );
 		$this->assertTrue( class_exists( LiteDeliveryCalculator::class ) );
-		$this->assertTrue( class_exists( '\WPRuby\DeliveryPromise\Infrastructure\ProConflict' ) );
 	}
 
 	public function test_settings_can_be_read_with_defaults(): void {

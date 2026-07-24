@@ -21,8 +21,4 @@ class PluginIdentityTest extends TestCase {
 	public function test_lite_settings_use_separate_option_key(): void {
 		$this->assertSame( 'delivery_promise_lite_settings', Settings::OPTION_KEY );
 	}
-
-	public function test_pro_conflict_class_exists(): void {
-		$this->assertTrue( class_exists( '\WPRuby\DeliveryPromise\Infrastructure\ProConflict' ) );
-	}
 }

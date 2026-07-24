@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-18T15:13:38+00:00\n"
+"POT-Creation-Date: 2026-07-24T17:30:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: delivery-promise-for-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: delivery-promise-for-woocommerce.php
-#: includes/Admin/AdminApp.php:45
+#: includes/Admin/AdminApp.php:42
 msgid "Delivery Promise for WooCommerce"
 msgstr ""
 
@@ -40,19 +40,15 @@ msgstr ""
 msgid "https://wpruby.com"
 msgstr ""
 
-#: includes/Admin/AdminApp.php:46
+#: includes/Admin/AdminApp.php:43
 msgid "Delivery Promise"
 msgstr ""
 
-#: includes/Admin/AdminApp.php:62
+#: includes/Admin/AdminApp.php:59
 msgid "Settings"
 msgstr ""
 
-#: includes/Admin/AdminApp.php:89
-msgid "WooCommerce Delivery Dates Pro is active. Please deactivate Delivery Promise for WooCommerce to avoid duplicate delivery estimates."
-msgstr ""
-
-#: includes/Admin/AdminApp.php:107
+#: includes/Admin/AdminApp.php:76
 msgid "Loading Delivery Promise…"
 msgstr ""
 
@@ -140,7 +136,7 @@ msgstr ""
 msgid "tomorrow"
 msgstr ""
 
-#: includes/Infrastructure/Assets.php:75
+#: includes/Infrastructure/Assets.php:76
 msgid "Delivery Promise: the admin app bundle is missing. Run \"npm install && npm run build\" inside the plugin folder."
 msgstr ""
 
@@ -148,7 +144,7 @@ msgstr ""
 msgid "Order today and get it between {earliest_date} – {latest_date}."
 msgstr ""
 
-#: includes/Plugin.php:141
+#: includes/Plugin.php:137
 msgid "Delivery Promise for WooCommerce requires WooCommerce to be installed and active."
 msgstr ""
 
