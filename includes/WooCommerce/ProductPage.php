@@ -91,7 +91,7 @@ class ProductPage {
 	}
 
 	/**
-	 * Add delivery promise data to WooCommerce variation payloads.
+	 * Add estimate data to WooCommerce variation payloads.
 	 *
 	 * @param array<string,mixed> $data      Variation data.
 	 * @param WC_Product          $product   Parent product.
@@ -103,7 +103,7 @@ class ProductPage {
 		unset( $product );
 
 		if ( ! $this->should_show_for_product( $variation ) ) {
-			$data['delivery_promise_lite'] = array(
+			$data['eddd'] = array(
 				'hidden'  => true,
 				'message' => '',
 			);
@@ -113,7 +113,7 @@ class ProductPage {
 
 		$message = $this->build_message();
 
-		$data['delivery_promise_lite'] = array(
+		$data['eddd'] = array(
 			'hidden'  => '' === trim( wp_strip_all_tags( $message ) ),
 			'message' => wp_kses_post( $message ),
 		);
@@ -155,7 +155,7 @@ class ProductPage {
 		 * @param string    $template Message template.
 		 * @param WC_Product|null $product Product (may be null in preview contexts).
 		 */
-		$template = (string) apply_filters( 'delivery_promise_lite_product_message_template', $template, null );
+		$template = (string) apply_filters( 'eddd_product_message_template', $template, null );
 
 		return $this->formatter->format( $template, $estimate, 'product' );
 	}
@@ -178,7 +178,7 @@ class ProductPage {
 		$show_icon = $this->settings->show_icon();
 
 		ob_start();
-		include DELIVERY_PROMISE_PLUGIN_DIR . 'templates/frontend/lite-estimate.php';
+		include EDDD_PLUGIN_DIR . 'templates/frontend/lite-estimate.php';
 
 		$html = (string) ob_get_clean();
 
@@ -189,6 +189,6 @@ class ProductPage {
 		 * @param WC_Product $product Product.
 		 * @param string     $message Formatted message.
 		 */
-		return (string) apply_filters( 'delivery_promise_lite_product_html', $html, $product, $message );
+		return (string) apply_filters( 'eddd_product_html', $html, $product, $message );
 	}
 }

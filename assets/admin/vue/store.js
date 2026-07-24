@@ -1,7 +1,7 @@
 import { reactive, computed } from 'vue';
 import { api, ApiError, __ } from './api/client.js';
 
-const boot = window.deliveryPromiseLite || {};
+const boot = window.edddAdmin || {};
 
 export const state = reactive({
   ready: false,

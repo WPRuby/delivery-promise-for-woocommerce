@@ -135,8 +135,8 @@ final class Plugin {
 
 		echo '<div class="notice notice-error"><p>';
 		echo esc_html__(
-			'Delivery Promise for WooCommerce requires WooCommerce to be installed and active.',
-			'delivery-promise-for-woocommerce'
+			'Estimated Delivery and Dispatch Dates for WooCommerce requires WooCommerce to be installed and active.',
+			'estimated-delivery-and-dispatch-dates-for-woocommerce'
 		);
 		echo '</p></div>';
 	}

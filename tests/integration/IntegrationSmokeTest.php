@@ -34,7 +34,7 @@ class IntegrationSmokeTest extends TestCase {
 
 		$this->assertSame( array( 1, 2, 3, 4, 5 ), $settings->working_days() );
 		$this->assertSame( '14:00', $settings->cutoff_time() );
-		$this->assertSame( Settings::OPTION_KEY, 'delivery_promise_lite_settings' );
+		$this->assertSame( Settings::OPTION_KEY, 'eddd_settings' );
 	}
 
 	public function test_rest_endpoints_require_capability(): void {

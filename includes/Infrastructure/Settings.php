@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Settings {
 
-	const OPTION_KEY = 'delivery_promise_lite_settings';
+	const OPTION_KEY = 'eddd_settings';
 
 	const PLACEMENT_AFTER_PRICE        = 'after_price';
 	const PLACEMENT_BEFORE_ADD_TO_CART = 'before_add_to_cart';
@@ -52,7 +52,7 @@ class Settings {
 			'cutoff_time'       => '14:00',
 			'working_days'      => array( 1, 2, 3, 4, 5 ),
 			'holidays'          => array(),
-			'message_product'   => __( 'Order today and get it between {earliest_date} – {latest_date}.', 'delivery-promise-for-woocommerce' ),
+			'message_product'   => __( 'Order today and get it between {earliest_date} – {latest_date}.', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
 			'product_placement' => self::PLACEMENT_AFTER_ADD_TO_CART,
 			'display_style'     => self::STYLE_HIGHLIGHTED,
 			'show_icon'         => 'yes',
@@ -63,7 +63,7 @@ class Settings {
 		 *
 		 * @param array<string,mixed> $defaults Default settings.
 		 */
-		return (array) apply_filters( 'delivery_promise_lite_default_settings', $defaults );
+		return (array) apply_filters( 'eddd_default_settings', $defaults );
 	}
 
 	/**

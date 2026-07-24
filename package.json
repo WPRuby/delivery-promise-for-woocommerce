@@ -1,8 +1,8 @@
 {
-  "name": "wpruby-delivery-promise-admin",
+  "name": "wpruby-eddd-admin",
   "version": "1.0.0",
   "private": true,
-  "description": "Vue 3 admin app for Delivery Promise for WooCommerce.",
+  "description": "Vue 3 admin app for Estimated Delivery and Dispatch Dates for WooCommerce.",
   "type": "module",
   "scripts": {
     "dev": "vite build --watch",

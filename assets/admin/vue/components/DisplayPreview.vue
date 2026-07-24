@@ -1,10 +1,10 @@
 <template>
   <div
-    class="delivery-promise-lite delivery-promise-lite--preview delivery-promise-lite--"
-    :class="`delivery-promise-lite--${style}`"
+    class="eddd eddd--preview"
+    :class="`eddd--${style}`"
   >
-    <span v-if="showIcon" class="delivery-promise-lite__icon" aria-hidden="true">&#128666;</span>
-    <span class="delivery-promise-lite__message" v-html="safeMessage"></span>
+    <span v-if="showIcon" class="eddd__icon" aria-hidden="true">&#128666;</span>
+    <span class="eddd__message" v-html="safeMessage"></span>
   </div>
 </template>
 
@@ -24,21 +24,21 @@ const safeMessage = computed(() => {
 </script>
 
 <style scoped>
-.delivery-promise-lite--preview {
+.eddd--preview {
   margin: 0;
 }
-.delivery-promise-lite--plain {
+.eddd--plain {
   padding: 0;
   background: transparent;
   border: 0;
 }
-.delivery-promise-lite--highlighted {
+.eddd--highlighted {
   padding: 0.75em 1em;
   border-radius: 10px;
   background: #fce7f3;
   border: 1px solid #f9a8d4;
 }
-.delivery-promise-lite {
+.eddd {
   display: flex;
   align-items: flex-start;
   gap: 0.5em;

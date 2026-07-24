@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class AdminApp {
 
-	const PAGE_SLUG  = 'delivery-promise-for-woocommerce';
+	const PAGE_SLUG  = 'estimated-delivery-and-dispatch-dates-for-woocommerce';
 	const CAPABILITY = 'manage_woocommerce';
 
 	/**
@@ -28,7 +28,7 @@ class AdminApp {
 	 */
 	public function register(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
-		add_filter( 'plugin_action_links_' . DELIVERY_PROMISE_BASENAME, array( $this, 'action_links' ) );
+		add_filter( 'plugin_action_links_' . EDDD_BASENAME, array( $this, 'action_links' ) );
 	}
 
 	/**
@@ -39,8 +39,8 @@ class AdminApp {
 	public function add_menu(): void {
 		add_submenu_page(
 			'woocommerce',
-			__( 'Delivery Promise for WooCommerce', 'delivery-promise-for-woocommerce' ),
-			__( 'Delivery Promise', 'delivery-promise-for-woocommerce' ),
+			__( 'Estimated Delivery and Dispatch Dates for WooCommerce', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
+			__( 'Estimated Delivery', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
 			self::CAPABILITY,
 			self::PAGE_SLUG,
 			array( $this, 'render_page' )
@@ -56,7 +56,7 @@ class AdminApp {
 	 */
 	public function action_links( array $links ): array {
 		$url  = admin_url( 'admin.php?page=' . self::PAGE_SLUG );
-		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'delivery-promise-for-woocommerce' ) . '</a>';
+		$link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ) . '</a>';
 		array_unshift( $links, $link );
 
 		return $links;
@@ -72,8 +72,8 @@ class AdminApp {
 			return;
 		}
 
-		echo '<div id="delivery-promise-lite-admin" class="delivery-promise-lite-admin">';
-		echo '<p class="delivery-promise-lite-admin__loading">' . esc_html__( 'Loading Delivery Promise…', 'delivery-promise-for-woocommerce' ) . '</p>';
+		echo '<div id="eddd-admin" class="eddd-admin">';
+		echo '<p class="eddd-admin__loading">' . esc_html__( 'Loading Estimated Delivery…', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ) . '</p>';
 		echo '</div>';
 	}
 }

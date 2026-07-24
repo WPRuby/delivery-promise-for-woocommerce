@@ -1,8 +1,8 @@
 /**
- * Delivery Promise Lite — scoped storefront styles.
+ * Estimated Delivery — scoped storefront styles.
  */
 
-.delivery-promise-lite {
+.eddd {
 	display: flex;
 	align-items: flex-start;
 	gap: 0.5em;
@@ -11,16 +11,16 @@
 	line-height: 1.5;
 }
 
-.delivery-promise-lite__icon {
+.eddd__icon {
 	flex-shrink: 0;
 	line-height: 1.5;
 }
 
-.delivery-promise-lite__message {
+.eddd__message {
 	flex: 1 1 auto;
 }
 
-.delivery-promise-lite--highlighted {
+.eddd--highlighted {
 	padding: 0.65em 0.85em;
 	border-radius: 4px;
 	background: #f0f6fc;
@@ -28,7 +28,7 @@
 	color: #1d2327;
 }
 
-.delivery-promise-lite--plain {
+.eddd--plain {
 	padding: 0;
 	background: transparent;
 	border: 0;

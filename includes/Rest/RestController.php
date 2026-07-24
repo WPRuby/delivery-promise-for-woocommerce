@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class RestController {
 
-	const NAMESPACE  = 'delivery-promise-for-woocommerce/v1';
+	const NAMESPACE  = 'estimated-delivery-and-dispatch-dates-for-woocommerce/v1';
 	const CAPABILITY = 'manage_woocommerce';
 
 	/**
@@ -133,8 +133,8 @@ class RestController {
 	public function check_permission() {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			return new WP_Error(
-				'delivery_promise_forbidden',
-				__( 'You do not have permission to manage Delivery Promise settings.', 'delivery-promise-for-woocommerce' ),
+				'eddd_forbidden',
+				__( 'You do not have permission to manage Estimated Delivery settings.', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -316,8 +316,8 @@ class RestController {
 		$value = trim( $value );
 		if ( '' === $value ) {
 			return new WP_Error(
-				'delivery_promise_invalid_datetime',
-				__( 'Preview datetime cannot be empty.', 'delivery-promise-for-woocommerce' ),
+				'eddd_invalid_datetime',
+				__( 'Preview datetime cannot be empty.', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -331,8 +331,8 @@ class RestController {
 
 		if ( ! $dt ) {
 			return new WP_Error(
-				'delivery_promise_invalid_datetime',
-				__( 'Preview datetime must be a valid date/time.', 'delivery-promise-for-woocommerce' ),
+				'eddd_invalid_datetime',
+				__( 'Preview datetime must be a valid date/time.', 'estimated-delivery-and-dispatch-dates-for-woocommerce' ),
 				array( 'status' => 400 )
 			);
 		}

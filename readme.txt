@@ -1,4 +1,4 @@
-=== Delivery Promise for WooCommerce ===
+=== Estimated Delivery and Dispatch Dates for WooCommerce ===
 Contributors: wprubyplugins
 Donate link: https://wpruby.com/
 Tags: woocommerce, delivery date, estimated delivery date, shipping date, delivery time
@@ -13,11 +13,11 @@ Product page delivery estimates for WooCommerce using processing days, transit d
 
 == Description ==
 
-Delivery Promise for WooCommerce shows simple delivery and dispatch estimates on WooCommerce product pages using your configured processing days, transit days, and working days.
+Estimated Delivery and Dispatch Dates for WooCommerce shows simple delivery and dispatch estimates on WooCommerce product pages using your configured processing days, transit days, and working days.
 
 Works with WooCommerce. Delivery estimates for WooCommerce product pages are calculated locally from your store settings — no external APIs and no license key.
 
-Delivery Promise for WooCommerce is an independent plugin and is not affiliated with, endorsed by, or sponsored by WooCommerce, Automattic, or WordPress.
+Estimated Delivery and Dispatch Dates for WooCommerce is an independent plugin and is not affiliated with, endorsed by, or sponsored by WooCommerce, Automattic, or WordPress.
 
 Example messages:
 
@@ -42,15 +42,15 @@ Example messages:
 * `{processing_days}` — configured processing days
 * `{min_transit_days}` / `{max_transit_days}` — transit day range
 
-**Source code:** The Vue admin UI source is included under `assets/admin/vue/`. The public repository is https://github.com/WPRuby/delivery-promise-for-woocommerce
+**Source code:** The Vue admin UI source is included under `assets/admin/vue/`. The public repository is https://github.com/WPRuby/estimated-delivery-and-dispatch-dates-for-woocommerce
 
 == Installation ==
 
-1. Upload the plugin files to `/wp-content/plugins/delivery-promise-for-woocommerce`, or install through the WordPress plugins screen.
+1. Upload the plugin files to `/wp-content/plugins/estimated-delivery-and-dispatch-dates-for-woocommerce`, or install through the WordPress plugins screen.
 2. Activate the plugin through the Plugins screen.
 3. Ensure WooCommerce is installed and active.
-4. Go to **WooCommerce → Delivery Promise** to configure settings.
-5. Enable Delivery Promise and set your processing days, transit days, and working days.
+4. Go to **WooCommerce → Estimated Delivery** to configure settings.
+5. Enable estimated delivery dates and set your processing days, transit days, and working days.
 6. View an in-stock product page to see the estimate.
 
 == Frequently Asked Questions ==

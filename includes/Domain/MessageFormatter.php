@@ -59,7 +59,7 @@ class MessageFormatter {
 		 * @param string   $context      Output context.
 		 * @param array    $replacements Placeholder replacement map.
 		 */
-		return (string) apply_filters( 'delivery_promise_lite_message', $message, $template, $estimate, $context, $replacements );
+		return (string) apply_filters( 'eddd_message', $message, $template, $estimate, $context, $replacements );
 	}
 
 	/**
@@ -122,7 +122,7 @@ class MessageFormatter {
 		 *
 		 * @param string $separator Separator string.
 		 */
-		$separator = (string) apply_filters( 'delivery_promise_lite_range_separator', ' – ' );
+		$separator = (string) apply_filters( 'eddd_range_separator', ' – ' );
 
 		return $this->format_date( $min ) . $separator . $this->format_date( $max );
 	}
@@ -157,11 +157,11 @@ class MessageFormatter {
 		$target   = $date->format( 'Y-m-d' );
 
 		if ( $target === $today ) {
-			return __( 'today', 'delivery-promise-for-woocommerce' );
+			return __( 'today', 'estimated-delivery-and-dispatch-dates-for-woocommerce' );
 		}
 
 		if ( $target === $tomorrow ) {
-			return __( 'tomorrow', 'delivery-promise-for-woocommerce' );
+			return __( 'tomorrow', 'estimated-delivery-and-dispatch-dates-for-woocommerce' );
 		}
 
 		return $this->format_date( $date );

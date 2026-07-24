@@ -59,7 +59,7 @@ const cards = {
 };
 
 const labels = {
-  enable: __('Enable Delivery Promise'),
+  enable: __('Enable estimated delivery dates'),
   enableHelp: __('Turn delivery promise estimates on or off across your store.'),
   on: __('On'),
   off: __('Off'),

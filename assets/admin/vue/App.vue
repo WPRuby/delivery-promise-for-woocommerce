@@ -63,7 +63,7 @@ const tabs = [
 const tabIds = tabs.map((tab) => tab.id);
 const activeTab = ref(tabFromHash());
 
-const tabsLabel = __('Delivery Promise sections');
+const tabsLabel = __('Estimated Delivery sections');
 const loadingLabel = __('Loading…');
 const retryLabel = __('Try again');
 

@@ -60,10 +60,10 @@ defineProps({
 });
 defineEmits(['save']);
 
-const boot = window.deliveryPromiseLite || {};
+const boot = window.edddAdmin || {};
 const version = boot.version || '';
 
-const title = __('Delivery Promise for WooCommerce');
+const title = __('Estimated Delivery and Dispatch Dates for WooCommerce');
 const description = __('Show simple delivery and dispatch estimates on WooCommerce product pages.');
 const saveLabel = __('Save changes');
 const savingLabel = __('Saving…');

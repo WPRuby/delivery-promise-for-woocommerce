@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="delivery-promise-lite delivery-promise-lite--<?php echo esc_attr( $style ); ?>">
+<div class="eddd eddd--<?php echo esc_attr( $style ); ?>">
 	<?php if ( $show_icon ) : ?>
-		<span class="delivery-promise-lite__icon" aria-hidden="true">&#128666;</span>
+		<span class="eddd__icon" aria-hidden="true">&#128666;</span>
 	<?php endif; ?>
-	<span class="delivery-promise-lite__message"><?php echo wp_kses_post( $message ); ?></span>
+	<span class="eddd__message"><?php echo wp_kses_post( $message ); ?></span>
 </div>

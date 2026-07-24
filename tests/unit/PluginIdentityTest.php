@@ -13,12 +13,12 @@ use WPRuby\DeliveryPromise\Tests\TestCase;
 class PluginIdentityTest extends TestCase {
 
 	public function test_lite_constants_are_defined(): void {
-		$this->assertSame( '1.0.0', DELIVERY_PROMISE_VERSION );
-		$this->assertSame( 'delivery-promise-for-woocommerce', DELIVERY_PROMISE_TEXT_DOMAIN );
-		$this->assertStringContainsString( 'delivery-promise-for-woocommerce.php', DELIVERY_PROMISE_PLUGIN_FILE );
+		$this->assertSame( '1.0.0', EDDD_VERSION );
+		$this->assertSame( 'estimated-delivery-and-dispatch-dates-for-woocommerce', EDDD_TEXT_DOMAIN );
+		$this->assertStringContainsString( 'estimated-delivery-and-dispatch-dates-for-woocommerce.php', EDDD_PLUGIN_FILE );
 	}
 
 	public function test_lite_settings_use_separate_option_key(): void {
-		$this->assertSame( 'delivery_promise_lite_settings', Settings::OPTION_KEY );
+		$this->assertSame( 'eddd_settings', Settings::OPTION_KEY );
 	}
 }

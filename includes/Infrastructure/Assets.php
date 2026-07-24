@@ -63,8 +63,8 @@ class Assets {
 			return;
 		}
 
-		$dist_dir = DELIVERY_PROMISE_PLUGIN_DIR . 'assets/admin/dist/';
-		$dist_url = DELIVERY_PROMISE_PLUGIN_URL . 'assets/admin/dist/';
+		$dist_dir = EDDD_PLUGIN_DIR . 'assets/admin/dist/';
+		$dist_url = EDDD_PLUGIN_URL . 'assets/admin/dist/';
 		$js_file  = $dist_dir . 'app.js';
 		$css_file = $dist_dir . 'app.css';
 
@@ -74,8 +74,8 @@ class Assets {
 				static function () {
 					echo '<div class="notice notice-error"><p>';
 					echo esc_html__(
-						'Delivery Promise: the admin app bundle is missing. Run "npm install && npm run build" inside the plugin folder.',
-						'delivery-promise-for-woocommerce'
+						'Estimated Delivery: the admin app bundle is missing. Run "npm install && npm run build" inside the plugin folder.',
+						'estimated-delivery-and-dispatch-dates-for-woocommerce'
 					);
 					echo '</p></div>';
 				}
@@ -84,11 +84,11 @@ class Assets {
 			return;
 		}
 
-		$version = (string) DELIVERY_PROMISE_VERSION . '.' . (string) filemtime( $js_file );
+		$version = (string) EDDD_VERSION . '.' . (string) filemtime( $js_file );
 
 		if ( is_readable( $css_file ) ) {
 			wp_enqueue_style(
-				'delivery-promise-lite-admin',
+				'eddd-admin',
 				$dist_url . 'app.css',
 				array(),
 				$version
@@ -96,7 +96,7 @@ class Assets {
 		}
 
 		wp_enqueue_script(
-			'delivery-promise-lite-admin',
+			'eddd-admin',
 			$dist_url . 'app.js',
 			array( 'wp-i18n' ),
 			$version,
@@ -104,18 +104,18 @@ class Assets {
 		);
 
 		wp_localize_script(
-			'delivery-promise-lite-admin',
-			'deliveryPromiseLite',
+			'eddd-admin',
+			'edddAdmin',
 			array(
-				'restUrl'   => esc_url_raw( rest_url( 'delivery-promise-for-woocommerce/v1/' ) ),
+				'restUrl'   => esc_url_raw( rest_url( 'estimated-delivery-and-dispatch-dates-for-woocommerce/v1/' ) ),
 				'restNonce' => wp_create_nonce( 'wp_rest' ),
-				'version'   => (string) DELIVERY_PROMISE_VERSION,
+				'version'   => (string) EDDD_VERSION,
 				'data'      => AdminData::all(),
 			)
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'delivery-promise-lite-admin', DELIVERY_PROMISE_TEXT_DOMAIN );
+			wp_set_script_translations( 'eddd-admin', EDDD_TEXT_DOMAIN );
 		}
 	}
 
@@ -134,10 +134,10 @@ class Assets {
 		}
 
 		wp_enqueue_style(
-			'delivery-promise-lite',
-			DELIVERY_PROMISE_PLUGIN_URL . 'assets/frontend/lite.css',
+			'eddd',
+			EDDD_PLUGIN_URL . 'assets/frontend/lite.css',
 			array(),
-			DELIVERY_PROMISE_VERSION
+			EDDD_VERSION
 		);
 	}
 }

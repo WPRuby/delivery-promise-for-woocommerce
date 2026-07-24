@@ -32,7 +32,7 @@ if ( getenv( 'WPRUBY_DP_LOAD_WP_TESTS' ) && is_readable( $wp_tests_dir . '/inclu
 				require_once $woocommerce;
 			}
 
-			require_once $plugin_root . '/delivery-promise-for-woocommerce.php';
+			require_once $plugin_root . '/estimated-delivery-and-dispatch-dates-for-woocommerce.php';
 		}
 	);
 
@@ -56,13 +56,13 @@ if ( ! defined( 'DAY_IN_SECONDS' ) ) {
 	define( 'DAY_IN_SECONDS', 86400 );
 }
 
-if ( ! defined( 'DELIVERY_PROMISE_VERSION' ) ) {
-	define( 'DELIVERY_PROMISE_VERSION', '1.0.0' );
-	define( 'DELIVERY_PROMISE_PLUGIN_FILE', $plugin_root . '/delivery-promise-for-woocommerce.php' );
-	define( 'DELIVERY_PROMISE_PLUGIN_DIR', $plugin_root . '/' );
-	define( 'DELIVERY_PROMISE_PLUGIN_URL', 'https://example.test/wp-content/plugins/delivery-promise-for-woocommerce/' );
-	define( 'DELIVERY_PROMISE_TEXT_DOMAIN', 'delivery-promise-for-woocommerce' );
-	define( 'DELIVERY_PROMISE_BASENAME', 'delivery-promise-for-woocommerce/delivery-promise-for-woocommerce.php' );
+if ( ! defined( 'EDDD_VERSION' ) ) {
+	define( 'EDDD_VERSION', '1.0.0' );
+	define( 'EDDD_PLUGIN_FILE', $plugin_root . '/estimated-delivery-and-dispatch-dates-for-woocommerce.php' );
+	define( 'EDDD_PLUGIN_DIR', $plugin_root . '/' );
+	define( 'EDDD_PLUGIN_URL', 'https://example.test/wp-content/plugins/estimated-delivery-and-dispatch-dates-for-woocommerce/' );
+	define( 'EDDD_TEXT_DOMAIN', 'estimated-delivery-and-dispatch-dates-for-woocommerce' );
+	define( 'EDDD_BASENAME', 'estimated-delivery-and-dispatch-dates-for-woocommerce/estimated-delivery-and-dispatch-dates-for-woocommerce.php' );
 }
 
 $GLOBALS['wpruby_dp_test_options'] = array(

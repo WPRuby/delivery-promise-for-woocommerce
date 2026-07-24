@@ -92,7 +92,7 @@ class LiteDeliveryCalculator {
 		 * @param Estimate $estimate Calculated estimate.
 		 * @param Settings $settings Settings accessor.
 		 */
-		return apply_filters( 'delivery_promise_lite_calculated_estimate', $estimate, $this->settings );
+		return apply_filters( 'eddd_calculated_estimate', $estimate, $this->settings );
 	}
 
 	/**
